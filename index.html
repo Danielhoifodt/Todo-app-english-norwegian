@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huskeliste</title>
+    <style>
+        @font-face {
+        font-family: "cool";
+        src: url("/assets/fonts/ReallyFree-ALwl7.ttf");
+        }
+        body{
+            width:100vw;
+            height:100vh;
+            padding:0px;
+            margin:0px;
+            background-color: #C9CAD9;
+            display:grid;
+            font-family: "cool";
+            font-size:30px;
+            color:#131620;
+        }
+        .todo-wrapper{
+            margin:auto;
+            width:300px;
+            height:70%;
+            background-color: #7796CB;
+            display:grid;
+            grid-template-rows: 30% 70%;
+            border-radius: 5px;
+            border: 2px solid #576490;
+        }
+        .create-todo{
+            grid-row-start: 1;
+            grid-row-end: 2;
+            display:grid;
+            grid-template-columns: 5% 55% 20% 15% 5%;
+            grid-template-rows: 100px auto 50px;
+            border-bottom: 2px solid #576490;
+        }
+        h1{
+            grid-column-start: 1;
+            grid-column-end:6;
+            grid-row-start: 1;
+            grid-row-end:2;
+            margin:auto;
+        }
+        .input{
+            grid-column-start: 2;
+            grid-column-end:3;
+            grid-row-start: 2;
+            grid-row-end:3;
+            background-color: #576490;
+            border:none;
+            border-radius: 5px;
+            color:white;
+            padding-left:10px;
+            font-family: 'Times New Roman', Times, serif;
+            
+        }
+        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: white;
+            opacity: 1; /* Firefox */
+        }
+        label{
+            grid-column-start: 3;
+            grid-column-end:4;
+            grid-row-start: 2;
+            grid-row-end:3;
+            margin:0px auto auto auto;
+            font-family: 'Times New Roman', Times, serif;
+            font-size:12px;
+            
+        }
+        .checkbox{
+            grid-column-start: 3;
+            grid-column-end:4;
+            grid-row-start: 2;
+            grid-row-end:3;
+            margin:auto auto 0px auto;
+        }
+        .button{
+            grid-column-start: 4;
+            grid-column-end:5;
+            grid-row-start: 2;
+            grid-row-end:3;
+            background-color: #576490;
+            border:none;
+            border-radius: 5px;
+            color:white;
+            font-family: 'Times New Roman', Times, serif;
+            cursor:pointer;
+        }
+        .list-todo{
+            grid-row-start: 2;
+            grid-row-end:3;
+            background-color:#A3BCF9;
+            display:grid;
+            grid-template-columns: 5% auto 5%;
+            grid-template-rows: 5% auto 5%;
+        }
+        table{
+            grid-column-start: 2;
+            grid-column-end: 3;
+            grid-row-start: 2;
+            grid-row-end: 3;
+        }
+        td{
+            text-align: center;
+            font-size:20px;
+        }
+        .todo-border{
+            border-left: 2px solid green;
+        }
+        .todo-del{
+            color:red;
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="todo-wrapper">
+        <div class="create-todo">
+            <h1>Huskeliste</h1>
+            <input class="input" type="text" placeholder="Gjøremål...">
+            <label>Viktig</label>
+            <input class="checkbox" type="checkbox">
+            <button class="button" onclick="submit();">&#43;</button>
+        </div>
+        <div class="list-todo">
+            <table>
+            </table>
+        </div>
+    </div>
+    <script>
+        function submit()
+        {
+            let text = document.querySelector(".input");
+            let checkbox = document.querySelector(".checkbox");
+            const timeElapsed = Date.now();
+            const today = new Date(timeElapsed);
+            let id = Math.floor(Math.random() * 100);
+
+            let table = document.querySelector("table");
+            let tr = document.createElement("tr");
+            tr.setAttribute("id", id);
+            let table_row = table.appendChild(tr);
+
+            let td_1 = document.createElement("td");
+            let td_2 = document.createElement("td");
+            let td_3 = document.createElement("td");
+            let td_id = document.createElement("td");
+
+            if(checkbox.checked)
+            {
+                td_1.classList.add("todo-border");
+            }
+            td_1.innerHTML = text.value;
+            td_2.innerHTML = today.toLocaleDateString();
+            td_3.classList.add("todo-del");
+            td_3.innerHTML = "x";
+            td_3.setAttribute("onclick","del("+id+");");
+
+            table_row.appendChild(td_1);
+            table_row.appendChild(td_2);
+            table_row.appendChild(td_3);
+        }
+        function del(id)
+        {
+            let tr = document.getElementById(id);
+            let q = confirm("Er du sikker på at du vil slette denne?")
+            if(q == true)
+            {
+                tr.parentNode.removeChild(tr);
+            }
+            
+        }
+    </script>
+</body>
+</html>
