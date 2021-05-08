@@ -165,6 +165,13 @@
             table_row.appendChild(td_1);
             table_row.appendChild(td_2);
             table_row.appendChild(td_3);
+
+            resetInput();
+        }
+        function resetInput()
+        {
+            document.querySelector(".input").value = "";
+            document.querySelector(".checkbox").checked = false;
         }
         function del(id)
         {
