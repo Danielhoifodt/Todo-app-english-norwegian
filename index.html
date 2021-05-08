@@ -20,6 +20,7 @@
             font-family: "cool";
             font-size:30px;
             color:#131620;
+            box-sizing: border-box;
         }
         .todo-wrapper{
             margin:auto;
@@ -29,6 +30,15 @@
             display:grid;
             grid-template-rows: 30% 70%;
             border-radius: 5px;
+            border: 2px solid #576490;
+            position: relative;
+        }
+        img{
+            position: absolute;
+            width:1000px;
+            top:-65px;
+            left:-366px;
+            z-index: -1;
             border: 2px solid #576490;
         }
         .create-todo{
@@ -117,11 +127,27 @@
             color:red;
             cursor: pointer;
         }
+        @media (max-width:700px){
+            img{
+                display:none;
+            }
+            .create-todo{
+                grid-template-columns: 5% 50% 25% 15% 5%;
+                grid-template-rows: 80px auto 30px;
+            }
+            label{
+                margin:auto auto auto 10px;
+            }
+            .checkbox{
+                margin: auto 10px auto auto;
+            }
+        }
 
     </style>
 </head>
 <body>
     <div class="todo-wrapper">
+        <img alt="huskeliste" src="assets/img/huske.jpg">
         <div class="create-todo">
             <h1>Huskeliste</h1>
             <input class="input" type="text" placeholder="Gjøremål...">
