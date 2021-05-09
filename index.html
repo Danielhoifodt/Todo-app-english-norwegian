@@ -201,6 +201,16 @@
             document.querySelector(".input").value = "";
             document.querySelector(".checkbox").checked = false;
         }
+        
+        // Get the input for being able to press enter to add
+        var input = document.querySelector(".input");
+        input.addEventListener("keyup", function(event) {
+            // Number 13 is the "Enter" key on the keyboard
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                submit();
+            }
+        });
         function del(id)
         {
             let tr = document.getElementById(id);
