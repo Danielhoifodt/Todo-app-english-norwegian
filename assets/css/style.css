@@ -154,9 +154,9 @@
             grid-template-rows: 80px auto 30px;
         }
         label{
-            margin:auto auto auto 10px;
+            margin:auto auto auto 5px;
         }
         .checkbox{
-            margin: auto 10px auto auto;
+            margin: auto 5px auto auto;
         }
     }

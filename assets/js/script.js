@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 let td_1 = document.createElement("td");
                 let td_2 = document.createElement("td");
                 let td_3 = document.createElement("td");
-
+                //imp = important
                 if(todos.imp)
                 {
                     td_1.classList.add("todo-border");
@@ -53,7 +53,7 @@ function submit()
     localStorage.setItem('id', (id + 1).toString());
 
     //Set item in local storage
-
+    //imp is short for important
     let todo = {
         imp: checkbox.checked,
         text: text.value,

@@ -8,4 +8,4 @@ in local storage and is incrementing one at a time. To ceep the list of todos in
 
 You can also delete all todos, which means you delete them in local storage and refreshes the page.
 
-If you are from another country, you can simply change the text fields to your prefered language.
+I have two language versions. It checks your browser language and outputs the language(eigher norwegian or default english).
