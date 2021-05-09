@@ -20,7 +20,7 @@
         height:70%;
         background-color: #7796CB;
         display:grid;
-        grid-template-rows: 30% 70%;
+        grid-template-rows: 30% 60% 10%;
         border-radius: 5px;
         border: 2px solid #576490;
         position: relative;
@@ -103,6 +103,8 @@
         display:grid;
         grid-template-columns: 5% auto 5%;
         grid-template-rows: 5% auto 5%;
+        overflow-y:auto;
+        overflow-x: auto;
     }
     table{
         grid-column-start: 2;
@@ -120,6 +122,28 @@
     .todo-del{
         color:red;
         cursor: pointer;
+    }.bottom{
+        grid-row-start: 3;
+        grid-row-end:4;
+        background-color:#7796CB;
+        display:grid;
+        grid-template-columns: 5% auto 5%;
+        grid-template-rows: 5% auto 5%;
+        border-top: 2px solid #576490;
+    }
+    .del-button{
+        background-color: #576490;
+        border:none;
+        border-radius: 5px;
+        color:white;
+        font-family: 'Times New Roman', Times, serif;
+        cursor:pointer;
+        margin:auto;
+        grid-row-start: 2;
+        grid-row-end:3;
+        grid-column-start: 2;
+        grid-column-end:3;
+        width:100px;
     }
     @media (max-width:700px){
         img{
