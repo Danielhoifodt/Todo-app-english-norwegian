@@ -7,4 +7,4 @@ For generating unique id's (for deleting a todo) i used a javascrpt random numbe
 
 I also used localstorage for the todos, which generates the todos when the page refreshes.
 
-If you want to slit up code in unique files feel free to do so.
+If you want to split up code in unique files feel free to do so.
