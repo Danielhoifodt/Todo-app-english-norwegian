@@ -152,7 +152,7 @@
         <img alt="huskeliste" src="assets/img/huske.jpg">
         <div class="create-todo">
             <h1>Huskeliste</h1>
-            <input class="input" type="text" placeholder="Gjøremål...">
+            <input class="input" title="Press enter eller &#43; tegnet" type="text" placeholder="Gjøremål...">
             <label>Viktig</label>
             <input class="checkbox" type="checkbox">
             <button class="button" onclick="submit();">&#43;</button>
@@ -163,13 +163,65 @@
         </div>
     </div>
     <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            function isInGlobalStorage()
+            {
+                for(let i = 0; i <= 1000; i++)
+                {
+                    let todos = JSON.parse(localStorage.getItem("todo-"+i));
+                    if(todos != null)
+                    {
+                        let table = document.querySelector("table");
+                        let tr = document.createElement("tr");
+                        tr.setAttribute("id", todos.id);
+                        let table_row = table.appendChild(tr);
+
+                        let td_1 = document.createElement("td");
+                        let td_2 = document.createElement("td");
+                        let td_3 = document.createElement("td");
+
+                        if(todos.imp)
+                        {
+                            td_1.classList.add("todo-border");
+                        }
+                        td_1.innerHTML = todos.text;
+                        td_2.innerHTML = todos.date
+                        td_3.classList.add("todo-del");
+                        td_3.innerHTML = "x";
+                        td_3.setAttribute("onclick","del("+todos.id+");");
+
+                        table_row.appendChild(td_1);
+                        table_row.appendChild(td_2);
+                        table_row.appendChild(td_3);
+                    }
+                    
+                }
+                
+            }
+            isInGlobalStorage();
+        });
+
         function submit()
         {
             let text = document.querySelector(".input");
+            if(text.value == "")
+            {
+                return
+            }
             let checkbox = document.querySelector(".checkbox");
             const timeElapsed = Date.now();
             const today = new Date(timeElapsed);
             let id = Math.floor(Math.random() * 1000);
+
+            //Set item in local storage
+
+            let todo = {
+                imp: checkbox.checked,
+                text: text.value,
+                date: today.toLocaleDateString(),
+                id:id
+            }
+            localStorage.setItem("todo-"+id, JSON.stringify(todo));
 
             let table = document.querySelector("table");
             let tr = document.createElement("tr");
@@ -201,7 +253,7 @@
             document.querySelector(".input").value = "";
             document.querySelector(".checkbox").checked = false;
         }
-        
+
         // Get the input for being able to press enter to add
         var input = document.querySelector(".input");
         input.addEventListener("keyup", function(event) {
@@ -218,6 +270,7 @@
             if(q == true)
             {
                 tr.parentNode.removeChild(tr);
+                localStorage.removeItem('todo-'+id);
             }
             
         }
