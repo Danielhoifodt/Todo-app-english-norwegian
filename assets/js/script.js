@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function(){
     function isInGlobalStorage()
     {
-        for(let i = 1; i < 1000; i++)
+        for(let i = 1; i <= JSON.parse(localStorage.getItem("id")); i++)
         {
             let todos = JSON.parse(localStorage.getItem("todo-"+i));
 
