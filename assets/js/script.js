@@ -105,20 +105,63 @@ input.addEventListener("keyup", function(event) {
 function del(id)
 {
     let tr = document.getElementById(id);
-    let q = confirm("Er du sikker på at du vil slette denne?")
-    if(q)
+    let language = window.navigator.userLanguage || window.navigator.language;
+    switch (language)
     {
-        tr.parentNode.removeChild(tr);
-        localStorage.removeItem('todo-'+id);
+        case 'no':
+        case 'nb':
+        case 'nn':
+        case 'nb-NO':
+        case 'nb-no':
+        case 'nn-NO':
+        case 'nn-no':
+            let q_no = confirm("Er du sikker på at du vil slette denne?");
+            if(q_no)
+            {
+                tr.parentNode.removeChild(tr);
+                localStorage.removeItem('todo-'+id);
+            }
+            break;
+
+        default:
+            let q_en = confirm("Are you sure you want to delete this?");
+            if(q_en)
+            {
+                tr.parentNode.removeChild(tr);
+                localStorage.removeItem('todo-'+id);
+            }
+            break;
     }
     
 }
 function delAll()
 {
-    let q = confirm("Er du sikker på at du vil slette alle?")
-    if(q)
+    let language = window.navigator.userLanguage || window.navigator.language;
+
+    switch (language)
     {
-        localStorage.clear();
-        window.location.reload();
+        case 'no':
+        case 'nb':
+        case 'nn':
+        case 'nb-NO':
+        case 'nb-no':
+        case 'nn-NO':
+        case 'nn-no':
+            let q_no = confirm("Er du sikker på at du vil slette alle?");
+            if(q_no)
+            {
+                localStorage.clear();
+                window.location.reload();
+            }
+            break;
+
+        default:
+            let q_en = confirm("Are you sure you want to delete all?");
+            if(q_en)
+            {
+                localStorage.clear();
+                window.location.reload();
+            }
+            break;
     }
 }

@@ -15,10 +15,11 @@ window.addEventListener('load', function () {
             break;
 
         default:
+            this.document.title = "Todo list";
             document.querySelector("h1").innerHTML = "Todo list";
             let input = document.querySelector(".input");
-            input.placeholder = "To do...";
-            input.title = "Press enter or the &#43; button.";
+            input.placeholder = "Add Todo...";
+            input.title = "Press enter or the + button.";
             let label = this.document.querySelector("label");
             label.innerHTML = "Important";
             let del_button = document.querySelector(".del-button");
