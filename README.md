@@ -10,3 +10,5 @@ in local storage and is incrementing one at a time, to ceep the list of todos in
 You can also delete all todos, which means you delete them in local storage and refreshes the page.
 
 I have two language versions. It checks your browser language and outputs the language(eigher norwegian or default english).
+
+To view the app go to this link: https://danielhoifodt.github.io/Todo-app-english-norwegian/
